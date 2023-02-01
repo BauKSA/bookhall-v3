@@ -1,0 +1,21 @@
+.bs-card-main{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+    transition: 0.25s;
+}
+
+.bs-card-main:hover{
+    border-color: yellow;
+}
+
+.bs-card-img{
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 10px;
+}

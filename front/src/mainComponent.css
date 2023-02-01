@@ -1,0 +1,12 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.mainComponent{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,0 +1,40 @@
+.backto-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: black;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.backto-button{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: none;
+    border-style: none;
+    margin-left: 50px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
+}
+
+.backto-button:hover{
+    cursor: pointer;
+    color: rgb(105, 180, 225);
+}
+
+.backto-icon{
+    font-size: 45px;
+}
+
+.backto-text-main{
+    margin-left: 10px;
+}
+
+.backto-text{
+    color: white;
+    font-size: 25px;
+    margin: 0;
+}

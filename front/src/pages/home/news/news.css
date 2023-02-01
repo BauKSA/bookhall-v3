@@ -1,0 +1,110 @@
+.news-main{
+    display: flex;
+    flex-direction: column;
+}
+
+.news-img{
+    height: 300px;
+    width: 215px;
+    object-fit: cover;
+    border-style: none;
+    box-shadow: 0 0 0 2px black;
+    border-radius: 10px;
+    transition: 0.15s;
+}
+
+.news-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 175px;
+    height: 125px;
+    background-color: rgb(5, 80, 125);
+    align-self: center;
+    margin-top: -100px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0 2px black;
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.news-img:hover{
+    cursor: pointer;
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0 2px black;
+}
+
+.news-img:hover ~ .news-info{
+    opacity: 0.15;
+}
+
+.news-card-title-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 165px;
+    width: 165px;
+    max-height: 75px;
+    height: 75px;
+    overflow-y: hidden;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.news-card-title{
+    max-height: 75px;
+    margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-self: center;
+    height: fit-content;
+    font-size: small;
+    color: white;
+}
+
+.news-price-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: white;
+    width: fit-content;
+    align-self: center;
+    border-radius: 10px;
+    width: 125px;
+    max-width: 125px;
+    height: 40px;
+}
+
+.news-price-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.news-old-price{
+    font-size: smaller;
+    margin: 0;
+    color: red;
+    text-decoration: line-through;
+    align-self: center;
+    height: fit-content;
+}
+
+.news-price{
+    font-weight: bold;
+    margin: 0;
+    justify-self: center;
+}
+
+.news-cart-icon{
+    color: white;
+    margin-left: 5px;
+    font-size: 30px;
+    transition: 0.25s;
+}
+
+.news-cart-icon:hover{
+    cursor: pointer;
+    color: rgb(105, 180, 225)
+}

@@ -1,0 +1,276 @@
+.login-module{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    width: 450px;
+    height: 250px;
+    background-color: rgb(55, 130, 175);
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 15px;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 0 rgb(5, 80, 125);
+    z-index: 1;
+}
+
+.login-main{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.register-module{
+    height: 310px;
+}
+
+.user-login-inpu{
+    background-color: white;
+    border-style: none;
+    border-radius: 15px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.user-login-inpu:focus{
+    outline: none;
+}
+
+.user-login-button{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    max-width: 175px;
+    max-height: 35px;
+    width: 175px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-style: none;
+    border-radius: 15px;
+    margin-top: 25px;
+    align-self: center;
+    border-style: solid;
+    border-color: transparent;
+    transition: 0.5s;
+}
+
+.user-login-button:disabled{
+    background-color: gray;
+    cursor: default;
+}
+
+.user-login-button:disabled:hover{
+    background-color: gray;
+    cursor: default;
+}
+
+.login-button-text{
+    width: fit-content;
+    align-self: center;
+    color: white;
+    font-weight: normal;
+    font-size: larger;
+}
+
+.user-login-button:hover{
+    cursor: pointer;
+    border-color: black;
+}
+
+.close-module-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
+    align-content: flex-end;
+}
+
+.close-module{
+    display: flex;
+    flex-direction: column;
+    max-width: 30px;
+    max-height: 30px;
+    align-self: flex-end;
+    background-color: transparent;
+    border-style: none;
+    transition: 0.5s;
+}
+
+.close-module:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.close-icon{
+    align-self: center;
+    justify-self: center;
+    font-size: xx-large;
+}
+
+.user-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(55, 130, 175);
+    height: 100%;
+    border-left-style: double;
+    border-color: white;
+    border-width: 10px;
+}
+
+.user-actions{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.user-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 150px;
+    max-height: 25px;
+    width: 150px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-style: solid;
+    border-color: transparent;
+    transition: 0.5s;
+}
+
+.to-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 150px;
+    max-height: 25px;
+    width: 150px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-color: transparent;
+    transition: 0.5s;
+}
+
+.user-button:hover{
+    cursor: pointer;
+    border-color: black;
+}
+
+.login{
+    background-color: white;
+}
+
+.register{
+    background-color: rgb(5, 80, 125);
+    color: white;
+}
+
+.is-user{
+    justify-content: flex-end;
+}
+
+.logout{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    align-self: center;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-style: none;
+}
+
+.cart-container{
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    width: fit-content;
+    max-height: fit-content;
+    margin-top: 7px;
+    transition: 0.25s;
+}
+
+.cart-container:hover{
+    color: white;
+}
+
+.cart{
+    align-self: center;
+    font-size: xx-large;
+}
+
+.cart-number{
+   margin: 0;
+   align-self: center;
+}
+
+@media (min-width: 800px) and (max-width: 950px){
+    .user-main{
+        height: auto;
+        width: 375px;
+        border-style: none;
+        background-color: white;
+    }
+
+    .user-button{
+        width: 175px;
+        height: 35px;
+        font-size: medium;
+    }
+
+    .cart{
+        font-size: 35px;
+    }
+
+    .cart-number{
+        font-size: large;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 800px){
+    .user-main{
+        height: 150px;
+        max-height: 175px;
+        padding: 0;
+        border-left-style: none;
+        width: 100%;
+        background-color: white;
+        justify-content: flex-end;
+    }
+
+    .user-button{
+        width: 175px;
+        height: 35px;
+        font-size: medium;
+    }
+
+    .cart{
+        font-size: 35px;
+    }
+
+    .cart-number{
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .login-module{
+        width: 300px;
+    }
+}
