@@ -5,9 +5,13 @@ import '../forms.css'
 import { connect } from 'react-redux'
 import { add_manga_vol } from '../../../redux/actions'
 
+import { storage } from '../../../firebase';
+import { ref, uploadBytesResumable, getDownloadURL  } from "firebase/storage";
+
 import Loader from '../../../components/loader/loader'
 
-import noCover from '../../../imgs/no-cover.jpg'
+import Swal from 'sweetalert2'
+import { control_inputs_vol, serie_exist } from "./adminFunc";
 
 class AddMangaVol extends React.Component{
     constructor(props){
@@ -15,7 +19,8 @@ class AddMangaVol extends React.Component{
         this.state = {
             mangas: [],
             actual_vols: [],
-            img: noCover
+            img: "https://firebasestorage.googleapis.com/v0/b/proyecto-comiqueria.appspot.com/o/covers%2Fno-cover.jpg?alt=media&token=badf49a6-465c-414a-8443-814e52583cab",
+            submitted: false
         }
     }
 
@@ -30,6 +35,18 @@ class AddMangaVol extends React.Component{
             this.setState({
                 mangas: this.props.mangas
             })
+        }
+
+        if(prevProps.state.status !== this.props.state.status && this.state.submitted){
+            if(this.props.state.status){
+                return Swal.fire({
+                    icon: 'success',
+                    title: "Tomo agregado con éxito!"
+                })
+                .then(()=>{
+                    window.location.reload()
+                })
+            }
         }
     }
 
@@ -54,12 +71,64 @@ class AddMangaVol extends React.Component{
             })
         };
         reader.onerror = function (error) {
-        console.log('Error: ', error);
+            console.log('Error: ', error);
         }
     }
 
     handleUpdate = (e) => {
         e.preventDefault()
+
+        let errors = control_inputs_vol()
+
+        if(errors.code !== 200){
+            return Swal.fire({
+                icon: "error",
+                title: errors.text
+            })
+        }else{
+            let vol = errors.vol
+
+            const exist = serie_exist(vol, this.state.mangas)
+
+            if(exist.code !== 200){
+                if(exist.exist === "vol"){
+                    return Swal.fire({
+                        icon: "error",
+                        title: `${vol.serie} vol ${vol.numero} ${vol.special} ya existe!`
+                    })
+                }else if(exist.exist === "vol"){
+                    return Swal.fire({
+                        icon: "error",
+                        title: `La serie ${vol.serie} no existe!`
+                    })
+                }
+            }else{
+                const cover = document.getElementById('addmangavol-img').files[0]
+                const storageRef = ref(storage, `/covers/${cover.name}`);
+                const task = uploadBytesResumable(storageRef, cover);
+
+                task.on(
+                    "state_changed",
+                    (snapshot)=>{
+                        console.log(snapshot)
+                    },
+                    (error) => {
+                        console.log(error.message);
+                    },
+                    () => {
+                        getDownloadURL(task.snapshot.ref).then((downloadURL)=>{
+                            this.setState({
+                                submitted: true
+                            }, ()=>{
+                                document.getElementById('addmangavol-button').disabled = true
+                                vol.imgURL = downloadURL
+                                return this.props.add_manga_vol(vol)
+                            })
+                        })
+                    }
+                )
+            }
+        }
     }
 
     render(){
@@ -104,6 +173,7 @@ class AddMangaVol extends React.Component{
                             className="dash-form-input"
                             id="addmangavol-stock"
                             type="number"
+                            placeholder="0"
                             min={0}
                             />
                             <label htmlFor="addmangavol-precio" className="dash-form-label">
@@ -141,7 +211,7 @@ class AddMangaVol extends React.Component{
                             />
                         </div>
                     </span>
-                    <button className="dash-form-button" type="submit">
+                    <button className="dash-form-button" type="submit" id="addmangavol-button">
                         Crear
                     </button>
                     {

@@ -75,7 +75,7 @@ router.get('/get_products', async(req, res, next)=>{
             let serie = doc.data()
             serie.descuento = 0
             serie.id = doc.id
-            serie.type = "comic"
+            serie.type = "col"
             for(let i = 0; i < editoriales.length; i++){
                 if(editoriales[i].nombre === serie.editorial){
                     serie.descuento = editoriales[i].descuento
@@ -96,7 +96,7 @@ router.get('/get_products', async(req, res, next)=>{
             let serie = doc.data()
             serie.descuento = 0
             serie.id = doc.id
-            serie.type = "comic"
+            serie.type = "libro"
             for(let i = 0; i < editoriales.length; i++){
                 if(editoriales[i].nombre === serie.editorial){
                     serie.descuento = editoriales[i].descuento
@@ -168,6 +168,62 @@ router.get('/add_id', async(req, res, next)=>{
         next(error)
     })
 
+})
+
+router.get('/set_date', async(req, res, next)=>{
+
+    const db_mangas = db.collection('new-colecciones')
+    await db_mangas.get()
+    .then((get_mangas)=>{
+        get_mangas.forEach((doc)=>{
+            let vols = doc.data().vols
+            for(let i = 0; i < vols.length; i++){
+                const arr_date = vols[i].createdAt.split('/')
+                const _vol_date = [arr_date[1], arr_date[0], arr_date[2]].join('/')
+                vols[i].createdAt = _vol_date
+            }
+
+            db.collection('new-colecciones').doc(doc.id).update({
+                vols: vols
+            })
+            .then((response)=>{
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        })
+        
+        return res.send("success")
+    })
+    .catch((error)=>{
+        next(error)
+    })
+
+})
+
+router.get('/set_news', async(req, res, next)=>{
+
+    const db_mangas = db.collection('new-mangas')
+    await db_mangas.get()
+    .then((get_mangas)=>{
+        get_mangas.forEach((doc)=>{
+            let vols = doc.data().vols
+            let change = false
+            for(let i = 0; i < vols.length; i++){
+                if(vols[i].createdAt !== "1/27/2023"){
+                    vols[i].novedad = false
+                    change = true
+                }
+            }
+            if(change){
+                db.collection('new-mangas').doc(doc.id).update({
+                    vols: vols
+                })
+            }
+        })
+        
+        return res.send("success")
+    })
 })
 
 

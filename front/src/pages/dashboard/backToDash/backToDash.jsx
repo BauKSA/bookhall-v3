@@ -2,7 +2,7 @@ import React from "react";
 
 import './backToDash.css'
 
-import { TiArrowBackOutline } from 'react-icons/ti'
+import { IoArrowBackCircleSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
 class BackToDash extends React.Component{
@@ -10,7 +10,7 @@ class BackToDash extends React.Component{
         return(
             <div className="backto-main">
                 <Link to='/dashboard' className="backto-button">
-                    <TiArrowBackOutline className="backto-icon" />
+                    <IoArrowBackCircleSharp className="backto-icon" />
                 </Link>
                 <span className="backto-text-main">
                     <p className="backto-text">

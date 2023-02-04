@@ -1,0 +1,203 @@
+.home-bs-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.home-bs-title-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 0;
+    padding-right: 10px;
+    padding-left: 7px;
+    padding-bottom: 0;
+    align-self: center;
+    margin-bottom: 25px;
+}
+
+.home-bs-icon{
+    font-size: 75px;
+    margin-right: 15px;
+    color: white;
+}
+
+.home-bs-title{  
+    font-size: 75px;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    text-shadow: 
+        3px 3px rgb(105, 180, 225);
+    margin: 0;
+    width: fit-content;
+    align-self: center;
+}
+
+.home-bs-card-main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.home-bs-img{
+    border-color: black;
+    border-style: solid;
+    border-right-style: none;
+    width: 30%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 175px;
+    object-fit: cover;
+}
+
+.home-bs-info{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-height: 175px;
+    border-color: black;
+    border-style: solid;
+    border-left-style: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(5, 80, 125, 0.15);
+}
+
+.home-bs-card-title{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    padding-left: 15px;
+    background-color: rgb(0, 30, 75);
+    width: 95%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 1em;
+}
+
+.home-bs-card-icon{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.home-bs-sinopsis-main{
+    display: flex;
+    flex-direction: column;  
+    padding: 8px;
+    padding-left: 15px;
+}
+
+.home-bs-sinopsis{
+    max-height: 60px;
+    overflow-y:hidden;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+
+.home-bs-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    background-color: rgb(55, 130, 175);
+    border-color: black;
+    border-radius: 10px;
+    border-width: 2px;
+    height: 35px;
+    width: 125px;
+    max-height: 35px;
+    max-width: 125px;
+    align-self: flex-end;
+    margin-right: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: medium;
+    transition: 0.5s;
+}
+
+.home-bs-button:hover{
+    cursor: pointer;
+    background-color: rgb(55, 130, 175, 0.5);
+}
+
+@media (max-width: 900px){
+    .home-bs-icon{
+        display: none;
+    }
+}
+
+@media (max-width: 650px){
+
+    .home-bs-title-container{
+       padding: 0;
+    }
+
+    .home-bs-title{  
+        font-size: 50px;
+        text-shadow: 
+        2px 2px rgb(105, 180, 225);
+        margin-bottom: 10px;
+    }
+
+    .home-bs-card-main{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-bs-img{
+        border-style: solid;
+        border-bottom-style: none;
+        width: 85%;
+        border-radius: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        height: 125px;
+    }
+
+    .home-bs-info{
+        width: 85%;
+        border-style: solid;
+        border-top-style: none;
+        border-radius: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .home-bs-card-title{
+        text-align: left;
+        margin: 0;
+        height: 50px;
+        border-radius: 0;
+    }
+
+    .home-bs-card-icon{
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    .home-bs-button{
+        align-self: center;
+        margin: 0;
+        margin-top: 10px;
+    }
+
+}

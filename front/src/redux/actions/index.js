@@ -152,7 +152,7 @@ export function add_manga(data){
 
 export function add_manga_vol(data){
     return function(dispatch){
-        axios.post(`${tokens.server}/add_manga_vol`, data)
+        axios.post(`${tokens.server}/post_vol_manga`, data)
         .then((response)=>{
             dispatch({
                 type: STATUS,

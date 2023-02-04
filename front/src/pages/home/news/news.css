@@ -23,7 +23,8 @@
     align-self: center;
     margin-top: -100px;
     border-radius: 10px;
-    box-shadow: 2px 2px 0 2px black;
+    border-style: solid;
+    border-color: black;
     padding: 5px;
     transition: 0.5s;
 }
@@ -46,9 +47,10 @@
     width: 165px;
     max-height: 75px;
     height: 75px;
-    overflow-y: hidden;
+    overflow-y: auto;
     align-self: center;
     border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 .news-card-title{

@@ -14,7 +14,8 @@ class AddManga extends React.Component{
         super(props)
         this.state = {
             mangas: [],
-            editoriales: []
+            editoriales: [],
+            submitted: false
         }
     }
 
@@ -33,7 +34,7 @@ class AddManga extends React.Component{
             })
         }
 
-        if(prevProps.state.status !== this.props.state.status){
+        if(prevProps.state.status !== this.props.state.status && this.state.submitted){
             if(this.props.state.status){
                 return Swal.fire({
                     icon: 'success',
@@ -128,8 +129,12 @@ class AddManga extends React.Component{
                 title: `La serie ${serie.nombre} de ${serie.editorial} ya existe!`
             })
         }else{
-            document.getElementById('addmanga-button').disabled = true
-            return this.props.add_manga(serie)
+            this.setState({
+                submitted: true
+            }, ()=>{
+                document.getElementById('addmanga-button').disabled = true
+                return this.props.add_manga(serie)
+            })
         }
 
     }
