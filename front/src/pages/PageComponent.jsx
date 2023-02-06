@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Routes, Route } from 'react-router-dom'; 
 import Cart from './cart/cart';
+import AdminLibros from './dashboard/adminLibros/adminLibros';
 import AdminMangas from './dashboard/adminMangas/adminMangas';
 import Dashboard from './dashboard/dashboard';
 import Home from './home/home';
@@ -26,6 +27,11 @@ class PageComponent extends React.Component{
                     user={this.props.user}/>}
                 />
                 <Route path='/adminmangas' element={<AdminMangas
+                    products={this.props.products}
+                    user={this.props.user}
+                    editoriales={this.props.editoriales}/>}
+                />
+                <Route path='/adminlibros' element={<AdminLibros
                     products={this.props.products}
                     user={this.props.user}
                     editoriales={this.props.editoriales}/>}

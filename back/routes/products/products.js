@@ -39,7 +39,18 @@ router.get('/get_products', async(req, res, next)=>{
                 }
             }
 
-            products.push(serie)
+            /* ONLY ID */
+            let push = true
+            const vols = doc.data().vols
+            for(let i = 0; i < vols.length; i++){
+                if(!vols[i].id){
+                    push = false
+                }
+            }
+            
+            if(push){
+                products.push(serie)
+            }
 
         })
     })
@@ -61,7 +72,18 @@ router.get('/get_products', async(req, res, next)=>{
                 }
             }
 
-            products.push(serie)
+            /* ONLY ID */
+            let push = true
+            const vols = doc.data().vols
+            for(let i = 0; i < vols.length; i++){
+                if(!vols[i].id){
+                    push = false
+                }
+            }
+            
+            if(push){
+                products.push(serie)
+            }
         })
     })
     .catch((err)=>{
@@ -82,7 +104,18 @@ router.get('/get_products', async(req, res, next)=>{
                 }
             }
 
-            products.push(serie)
+            /* ONLY ID */
+            let push = true
+            const vols = doc.data().vols
+            for(let i = 0; i < vols.length; i++){
+                if(!vols[i].id){
+                    push = false
+                }
+            }
+            
+            if(push){
+                products.push(serie)
+            }
         })
     })
     .catch((err)=>{
@@ -103,7 +136,18 @@ router.get('/get_products', async(req, res, next)=>{
                 }
             }
 
-            products.push(serie)
+            /* ONLY ID */
+            let push = true
+            const vols = doc.data().vols
+            for(let i = 0; i < vols.length; i++){
+                if(!vols[i].id){
+                    push = false
+                }
+            }
+            
+            if(push){
+                products.push(serie)
+            }
         })
     })
     .catch((err)=>{

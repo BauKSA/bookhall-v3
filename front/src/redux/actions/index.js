@@ -164,3 +164,34 @@ export function add_manga_vol(data){
         })
     }
 }
+
+    /* LIBROS */
+export function add_libro(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_serie_libro`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+export function add_libro_vol(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_vol_libro`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}

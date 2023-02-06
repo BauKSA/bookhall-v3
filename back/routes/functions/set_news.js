@@ -1,7 +1,12 @@
 const admin = require('../../firebase');
 const db = admin.firestore();
 
-async function set_news(_date){
+async function set_news(_date, n){
+
+    if(!n){
+        return null
+    }
+
     const date = new Date(_date)
 
     const _response = []
@@ -26,6 +31,7 @@ async function set_news(_date){
         })
     })
 
+    console.log(_response)
     return _response
 
 }
