@@ -165,6 +165,68 @@ export function add_manga_vol(data){
     }
 }
 
+    /* CÓMICS */
+export function add_comic(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_serie_comic`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+export function add_comic_vol(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_vol_comic`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+    /* COLECCIONES */
+export function add_col(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_serie_col`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+export function add_col_vol(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_vol_col`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
     /* LIBROS */
 export function add_libro(data){
     return function(dispatch){

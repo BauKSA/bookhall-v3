@@ -7,7 +7,7 @@
 
 .dash-space-container{
     display: grid;
-    grid-template-columns: 450px 450px;
+    grid-template-columns: 475px 475px;
     align-items: flex-start;
     justify-content: center;
     align-content: center;
@@ -79,6 +79,40 @@
 .dash-space-button-p{
     font-weight: bold;
     font-size: medium;
+}
+
+.dash-button-change{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.button-change{
+    border-style: solid;
+    border-color: black;
+    height: 50px;
+    width: 150px;
+    font-size: large;
+    transition: 0.25s;
+}
+
+.button-change:hover{
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.change-left{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-right: 1px;
+}
+
+.change-right{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 1px;
 }
 
 @media (max-width: 900px){

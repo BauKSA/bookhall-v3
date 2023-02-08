@@ -66,7 +66,7 @@ export function control_inputs_vol(){
         let vol = {
             serie: serie.value,
             numero: numero.value,
-            precio: numero.value,
+            precio: precio.value,
             stock: stock.value,
             special: special.value,
             imgURL: cover.value,
