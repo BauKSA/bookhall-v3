@@ -39,6 +39,10 @@ router.get('/get_products', async(req, res, next)=>{
                 }
             }
 
+            if(parseInt(serie.vol_amount) === 1 && parseInt(serie.tomos_arg) === 1){
+                serie.vols[0].unico = true
+            }
+
             /* ONLY ID */
             let push = true
             const vols = doc.data().vols
@@ -70,6 +74,10 @@ router.get('/get_products', async(req, res, next)=>{
                 if(editoriales[i].nombre === serie.editorial){
                     serie.descuento = editoriales[i].descuento
                 }
+            }
+
+            if(parseInt(serie.vol_amount) === 1 && parseInt(serie.tomos_arg) === 1){
+                serie.vols[0].unico = true
             }
 
             /* ONLY ID */
@@ -134,6 +142,10 @@ router.get('/get_products', async(req, res, next)=>{
                 if(editoriales[i].nombre === serie.editorial){
                     serie.descuento = editoriales[i].descuento
                 }
+            }
+
+            if(parseInt(serie.vol_amount) === 1 && parseInt(serie.tomos_arg) === 1){
+                serie.vols[0].unico = true
             }
 
             /* ONLY ID */

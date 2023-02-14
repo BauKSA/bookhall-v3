@@ -257,3 +257,19 @@ export function add_libro_vol(data){
         })
     }
 }
+
+/* STOCK */
+export function change_stock(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/change_stock`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}

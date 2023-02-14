@@ -5,6 +5,23 @@
     margin-top: 25px;
 }
 
+.dash-space-main{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(475px, 1fr));
+}
+
+.dash-space-main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    row-gap: 25px;
+    column-gap: 25px;
+    width: 100%;
+}
+
 .dash-space-container{
     display: grid;
     grid-template-columns: 475px 475px;

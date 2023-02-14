@@ -72,6 +72,48 @@ class Dashboard extends React.Component{
                             </Link>
                         </span>
                     </span>
+                    <span className="dash-space">
+                        <h2 className="dash-space-title">
+                            Ventas / Stock
+                        </h2>
+                        <span className="dash-space-actions">
+                            <Link to="/adminstock" className="dash-space-link">
+                                <button className="dash-space-button">
+                                    <p className="dash-space-button-p">
+                                        Administrar stock
+                                    </p>
+                                </button>
+                            </Link>
+                            <Link to="/adminventas" className="dash-space-link">
+                                <button className="dash-space-button">
+                                    <p className="dash-space-button-p">
+                                        Administrar ventas
+                                    </p>
+                                </button>
+                            </Link>
+                        </span>
+                    </span>
+                    <span className="dash-space">
+                        <h2 className="dash-space-title">
+                            Precios
+                        </h2>
+                        <span className="dash-space-actions">
+                            <Link to="/adminstock" className="dash-space-link">
+                                <button className="dash-space-button">
+                                    <p className="dash-space-button-p">
+                                        Modificar precios
+                                    </p>
+                                </button>
+                            </Link>
+                            <Link to="/adminventas" className="dash-space-link">
+                                <button className="dash-space-button">
+                                    <p className="dash-space-button-p">
+                                        Modificar descuentos
+                                    </p>
+                                </button>
+                            </Link>
+                        </span>
+                    </span>
                 </span>
             </div>
         )

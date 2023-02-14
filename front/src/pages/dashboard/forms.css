@@ -79,7 +79,8 @@
     background-color: rgb(55, 130, 175, 0.5);
     border-style: solid;
     border-color: transparent;
-    box-sizing:content-box
+    box-sizing:content-box;
+    align-self: center;
 }
 
 .dash-form-input:focus{
