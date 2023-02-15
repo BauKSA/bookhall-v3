@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "../../../components/loader/loader";
 
 import './adminStock.css'
 import Stock from "./stock";
@@ -11,8 +12,10 @@ class AdminStock extends React.Component{
                 comics: [],
                 mangas: [],
                 colecciones: [],
-                libros: []
-            }
+                libros: [],
+                user: null
+            },
+            loading: true
         }
     }
 
@@ -70,7 +73,8 @@ class AdminStock extends React.Component{
         
 
         this.setState({
-            products: products
+            products: products,
+            user: this.props.user
         })
     }
 
@@ -78,18 +82,36 @@ class AdminStock extends React.Component{
         this.get_products()
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps, prevState){
         if(prevProps.products !== this.props.products){
             this.get_products()
+        }
+
+        if(prevState.user !== this.state.user){
+            if(this.state.user){
+                if(this.state.user.admin){
+                    this.setState({
+                        loading: false
+                    })
+                }else{
+                    window.location.hash = '/'
+                }
+            }else{
+                window.location.hash = '/'
+            }
         }
     }
 
     render(){
-        return(
-            <div className="adminstock-main">
-                <Stock products={this.state.products} />
-            </div>
-        )
+        if(this.state.loading){
+            return <Loader />
+        }else{
+            return(
+                <div className="adminstock-main">
+                    <Stock products={this.state.products} />
+                </div>
+            )
+        }
     }
 
 }

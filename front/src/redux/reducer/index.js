@@ -1,11 +1,12 @@
-import { PRODUCTS, REGISTER, STATUS, USER, EDITORIALES } from '../actions/index'
+import { PRODUCTS, REGISTER, STATUS, USER, EDITORIALES, VENTAS } from '../actions/index'
 
 const initialState = {
     status: null,
     products: [],
     user: null,
     register_status: null,
-    editoriales: []
+    editoriales: [],
+    ventas: []
 }
 
 export default function reducer(state = initialState, actions){
@@ -34,6 +35,12 @@ export default function reducer(state = initialState, actions){
             return{
                 ...state,
                 editoriales: actions.payload
+            }
+        case VENTAS:
+
+            return{
+                ...state,
+                ventas: actions.payload
             }
         default:
             return state

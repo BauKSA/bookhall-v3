@@ -8,6 +8,7 @@ export const USER = "USER"
 export const STATUS = "STATUS"
 export const REGISTER = "REGISTER"
 export const EDITORIALES = "EDITORIALES"
+export const VENTAS = "VENTAS"
 
 export function getProducts(){
     return function(dispatch){
@@ -262,6 +263,37 @@ export function add_libro_vol(data){
 export function change_stock(data){
     return function(dispatch){
         axios.post(`${tokens.server}/change_stock`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+/* VENTAS */
+export function get_ventas(){
+    return function(dispatch){
+        axios.get(`${tokens.server}/get_ventas`)
+        .then((response)=>{
+            dispatch({
+                type: VENTAS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
+export function entregada(id){
+    return function(dispatch){
+        axios.get(`${tokens.server}/entregada/${id}`)
         .then((response)=>{
             dispatch({
                 type: STATUS,

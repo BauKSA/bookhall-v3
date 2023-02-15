@@ -8,6 +8,7 @@ const comics = require('./products/comics')
 const colecciones = require('./products/colecciones')
 const libros = require('./products/libros')
 const stock = require('./stock/stock')
+const ventas = require('./ventas/ventas')
 
 const router = express();
 
@@ -19,5 +20,6 @@ router.use('/', comics)
 router.use('/', colecciones)
 router.use('/', libros)
 router.use('/', stock)
+router.use('/', ventas)
 
 module.exports = router;

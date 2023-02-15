@@ -18,7 +18,12 @@ router.post('/post_serie_libro', async(req, res, next)=>{
     db.collection('new-libros').add(serie)
     .then(async()=>{
         return res.send(true)
-    }) 
+    })
+    .catch((err)=>{
+        err.sub = `Error al postear serie libros. File libros.js - /post_serie_libro`
+        err.type = `postear a db.collection('new-libros')`
+        next(err)
+    })
 
 })
 
@@ -74,22 +79,14 @@ router.post('/post_vol_libro', async(req, res, next)=>{
                                 return res.send(true)
                             })
                         })
-                        .catch((err)=>{
-                            next(err)
-                        })
-                    })
-                    .catch((err)=>{
-                        err.sub = `Error al guardar libro ${vol.serie} ${vol.numero} ${vol.comment}. File libro.js - /post_vol_libro`
-                        err.type = `actualizar db.collection('new-libros')`
-                        next(err)
                     })
                 }
 
             })
         })
         .catch((err)=>{
-            err.sub = `Error al acceder a new-libros. File libro.js - /post_vol_libro`
-            err.type = `leer db.collection('new-libros')`
+            err.sub = `Error al postear a new-libros. File libros.js - /post_vol_libro`
+            err.type = `postear a new-libros`
             next(err)
         })
     })

@@ -16,7 +16,12 @@ router.post('/post_serie_col', async(req, res, next)=>{
     db.collection('new-colecciones').add(serie)
     .then(async()=>{
         return res.send(true)
-    }) 
+    })
+    .catch((err)=>{
+        err.sub = `Error al postear colección. File colecciones.js - /post_serie_col`
+        err.type = `postear a db.collection('new-colecciones')`
+        next(err)
+    })
 
 })
 
@@ -67,22 +72,14 @@ router.post('/post_vol_col', async(req, res, next)=>{
                                 return res.send(true)
                             })
                         })
-                        .catch((err)=>{
-                            next(err)
-                        })
-                    })
-                    .catch((err)=>{
-                        err.sub = `Error al guardar col ${vol.serie} ${vol.numero} ${vol.comment}. File col.js - /post_vol_col`
-                        err.type = `actualizar db.collection('new-colecciones')`
-                        next(err)
                     })
                 }
 
             })
         })
         .catch((err)=>{
-            err.sub = `Error al acceder a new-colecciones. File col.js - /post_vol_col`
-            err.type = `leer db.collection('new-colecciones')`
+            err.sub = `Error al postear a new-colecciones. File colecciones.js - /post_vol_col`
+            err.type = `postear a new-colecciones`
             next(err)
         })
     })

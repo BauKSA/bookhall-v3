@@ -18,7 +18,12 @@ router.post('/post_serie_comic', async(req, res, next)=>{
     db.collection('new-comics').add(serie)
     .then(async()=>{
         return res.send(true)
-    }) 
+    })
+    .catch((err)=>{
+        err.sub = `Error al postear serie comic. File comics.js - /post_serie_comic`
+        err.type = `postear a db.collection('new-comics')`
+        next(err)
+    })
 
 })
 
@@ -75,22 +80,14 @@ router.post('/post_vol_comic', async(req, res, next)=>{
                                 return res.send(true)
                             })
                         })
-                        .catch((err)=>{
-                            next(err)
-                        })
-                    })
-                    .catch((err)=>{
-                        err.sub = `Error al guardar comic ${vol.serie} ${vol.numero} ${vol.comment}. File comic.js - /post_vol_comic`
-                        err.type = `actualizar db.collection('new-comics')`
-                        next(err)
                     })
                 }
 
             })
         })
         .catch((err)=>{
-            err.sub = `Error al acceder a new-comics. File comic.js - /post_vol_comic`
-            err.type = `leer db.collection('new-comics')`
+            err.sub = `Error al postear a new-comics. File comics.js - /post_vol_comic`
+            err.type = `postear a new-comics`
             next(err)
         })
     })

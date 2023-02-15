@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from 'react-redux'
-import { getProducts, getUser, get_editoriales } from "./redux/actions";
+import { getProducts, getUser, get_editoriales, get_ventas } from "./redux/actions";
 
 import Loader from './components/loader/loader'
 
@@ -18,7 +18,8 @@ class MainComponent extends React.Component{
             user: null,
             loading: true,
             products: [],
-            editoriales: []
+            editoriales: [],
+            ventas: []
         }
     }
 
@@ -44,6 +45,14 @@ class MainComponent extends React.Component{
         if(prevProps.state.editoriales !== this.props.state.editoriales){
             this.setState({
                 editoriales: this.props.state.editoriales
+            }, ()=>{
+                this.props.get_ventas()
+            })
+        }
+
+        if(prevProps.state.ventas !== this.props.state.ventas){
+            this.setState({
+                ventas: this.props.state.ventas
             }, ()=>{
                 this.setState({
                     loading: false
@@ -83,7 +92,8 @@ class MainComponent extends React.Component{
                     <PageComponent
                     editoriales={this.state.editoriales}
                     user={this.state.user}
-                    products={this.state.products} />
+                    products={this.state.products}
+                    ventas={this.state.ventas} />
                 </div>
             )
         }
@@ -100,7 +110,8 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     getProducts,
     getUser,
-    get_editoriales
+    get_editoriales,
+    get_ventas
 }
 
 const conexion = connect(mapStateToProps, mapDispatchToProps)

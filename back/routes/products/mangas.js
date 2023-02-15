@@ -18,7 +18,12 @@ router.post('/post_serie_manga', async(req, res, next)=>{
     db.collection('new-mangas').add(serie)
     .then(async()=>{
         return res.send(true)
-    }) 
+    })
+    .catch((err)=>{
+        err.sub = `Error al postear serie manga. File mangas.js - /post_serie_manga`
+        err.type = `postear a db.collection('new-mangas')`
+        next(err)
+    })
 
 })
 
@@ -81,22 +86,14 @@ router.post('/post_vol_manga', async(req, res, next)=>{
                                 return res.send(true)
                             })
                         })
-                        .catch((err)=>{
-                            next(err)
-                        })
-                    })
-                    .catch((err)=>{
-                        err.sub = `Error al guardar manga ${vol.serie} ${vol.numero} ${vol.comment}. File manga.js - /post_vol_manga`
-                        err.type = `actualizar db.collection('new-mangas')`
-                        next(err)
                     })
                 }
 
             })
         })
         .catch((err)=>{
-            err.sub = `Error al acceder a new-mangas. File manga.js - /post_vol_manga`
-            err.type = `leer db.collection('new-mangas')`
+            err.sub = `Error al postear a new-mangas. File mangas.js - /post_vol_manga`
+            err.type = `postear a new-mangas`
             next(err)
         })
     })

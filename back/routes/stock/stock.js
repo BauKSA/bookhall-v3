@@ -48,14 +48,14 @@ router.post('/change_stock', async(req, res, next)=>{
                         .then(()=>{
                             return res.send(true)
                         })
-                        .catch((err)=>{
-                            err.sub = `Error al actualizar stock. File stock.js - /change_stock`
-                            err.type = `actualizar db.collection('new-${data.type.toLowerCase()}')`
-                            next(err)
-                        })
                     }
                 }
             })
+        })
+        .catch((err)=>{
+            err.sub = `Error al actualizar stock. File stock.js - /change_stock`
+            err.type = `actualizar db.collection('new-${data.type.toLowerCase()}')`
+            next(err)
         })
     }
 

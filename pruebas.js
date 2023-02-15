@@ -1,8 +1,7 @@
-const _date = new Date("07/18/2022")
+let animals = [{type:"lion"}, "tiger"]
 
-const date = _date.toLocaleDateString()
+let clones = animals.slice()
+clones[0].type = "bear"
+clones[1] = "sheep"
 
-console.log(typeof(_date.toJSON()))
-
-const new_date = new Date(_date.toJSON())
-console.log(new_date.getDate())
+console.log(clones)

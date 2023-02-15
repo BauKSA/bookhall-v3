@@ -6,6 +6,7 @@ import AdminComics from './dashboard/adminComics/adminComics';
 import AdminLibros from './dashboard/adminLibros/adminLibros';
 import AdminMangas from './dashboard/adminMangas/adminMangas';
 import AdminStock from './dashboard/adminStock/adminStock';
+import AdminVentas from './dashboard/adminVentas/adminVentas';
 import Dashboard from './dashboard/dashboard';
 import Home from './home/home';
 import Mangas from './mangas/mangas';
@@ -44,7 +45,12 @@ class PageComponent extends React.Component{
                     editoriales={this.props.editoriales}/>}
                 />
                 <Route path='/adminstock' element={<AdminStock
-                    products={this.props.products}/>}
+                    products={this.props.products}
+                    user={this.props.user}/>}
+                />
+                <Route path='/adminventas' element={<AdminVentas
+                    ventas={this.props.ventas}
+                    user={this.props.user}/>}
                 />
             </Routes>
         )

@@ -5,6 +5,7 @@ import AddComicVol from "./addComicVol";
 import BackToDash from '../backToDash/backToDash'
 import AddCol from "./addCol";
 import AddColVol from "./addColVol";
+import Loader from "../../../components/loader/loader";
 
 class AdminComics extends React.Component{
     constructor(props){
@@ -14,7 +15,8 @@ class AdminComics extends React.Component{
             cols: [],
             editoriales: [],
             user: null,
-            form: "series"
+            form: "series",
+            loading: true
         }
     }
 
@@ -43,16 +45,16 @@ class AdminComics extends React.Component{
             editoriales: editoriales
         }, ()=>{
             if(!this.state.user){
-                window.location.href = '/'
+                window.location.hash = '/'
             }else{
                 if(!this.state.user.admin){
-                    window.location.href = '/'
+                    window.location.hash = '/'
                 }
             }
         })
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps, prevState){
         if(prevProps.products !== this.props.products){
 
             const comics = []
@@ -79,14 +81,25 @@ class AdminComics extends React.Component{
                 editoriales: editoriales
             }, ()=>{
                 if(!this.state.user){
-                    window.location.href = '/'
+                    window.location.hash = '/'
                 }else{
                     if(!this.state.user.admin){
-                        window.location.href = '/'
+                        window.location.hash = '/'
                     }
                 }
             })
         }
+
+        if(prevState.user !== this.state.user){
+            if(this.state.user){
+                if(this.state.user.admin){
+                    this.setState({
+                        loading: false
+                    })
+                }
+            }
+        }
+
     }
 
     handleChange = (e) => {
@@ -118,36 +131,40 @@ class AdminComics extends React.Component{
     }
 
     render(){
-        return(
-            <div className="dashboard-main-container">
-                <BackToDash />
-                <h1 className="dashboard-title">
-                    Administrar cómics
-                </h1>
-                <span className="dash-button-change">
-                    <button className="button-change change-left"
-                    id="series-button"
-                    onClick={this.handleChange}
-                    style={this.handleStyle("series")}>
-                        Series
-                    </button>
-                    <button className="button-change change-right"
-                    id="colecciones-button"
-                    onClick={this.handleChange}
-                    style={this.handleStyle("colecciones")}>
-                        Colecciones
-                    </button>
-                </span>
-                <span className="dash-space-container" style={this.handleForm("series")}>
-                    <AddComicVol comics={this.state.comics} />
-                    <AddComic comics={this.state.comics} editoriales={this.state.editoriales} />
-                </span>
-                <span className="dash-space-container" style={this.handleForm("colecciones")}>
-                    <AddColVol cols={this.state.cols} />
-                    <AddCol cols={this.state.cols} editoriales={this.state.editoriales} />
-                </span>
-            </div>
-        )
+        if(this.state.loading){
+            return <Loader />
+        }else{
+            return(
+                <div className="dashboard-main-container">
+                    <BackToDash />
+                    <h1 className="dashboard-title">
+                        Administrar cómics
+                    </h1>
+                    <span className="dash-button-change">
+                        <button className="button-change change-left"
+                        id="series-button"
+                        onClick={this.handleChange}
+                        style={this.handleStyle("series")}>
+                            Series
+                        </button>
+                        <button className="button-change change-right"
+                        id="colecciones-button"
+                        onClick={this.handleChange}
+                        style={this.handleStyle("colecciones")}>
+                            Colecciones
+                        </button>
+                    </span>
+                    <span className="dash-space-container" style={this.handleForm("series")}>
+                        <AddComicVol comics={this.state.comics} />
+                        <AddComic comics={this.state.comics} editoriales={this.state.editoriales} />
+                    </span>
+                    <span className="dash-space-container" style={this.handleForm("colecciones")}>
+                        <AddColVol cols={this.state.cols} />
+                        <AddCol cols={this.state.cols} editoriales={this.state.editoriales} />
+                    </span>
+                </div>
+            )
+        }
     }
 
 }

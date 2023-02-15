@@ -3,6 +3,7 @@ import AddManga from "./addManga";
 import AddMangaVol from "./addMangaVol";
 
 import BackToDash from '../backToDash/backToDash'
+import Loader from "../../../components/loader/loader";
 
 class AdminMangas extends React.Component{
     constructor(props){
@@ -10,7 +11,8 @@ class AdminMangas extends React.Component{
         this.state = {
             mangas: [],
             editoriales: [],
-            user: null
+            user: null,
+            loading: true
         }
     }
 
@@ -33,16 +35,16 @@ class AdminMangas extends React.Component{
             editoriales: editoriales
         }, ()=>{
             if(!this.state.user){
-                window.location.href = '/'
+                window.location.hash = '/'
             }else{
                 if(!this.state.user.admin){
-                    window.location.href = '/'
+                    window.location.hash = '/'
                 }
             }
         })
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps, prevState){
         if(prevProps.products !== this.props.products){
 
             const mangas = []
@@ -64,29 +66,43 @@ class AdminMangas extends React.Component{
                 editoriales: editoriales
             }, ()=>{
                 if(!this.state.user){
-                    window.location.href = '/'
+                    window.location.hash = '/'
                 }else{
                     if(!this.state.user.admin){
-                        window.location.href = '/'
+                        window.location.hash = '/'
                     }
                 }
             })
         }
+
+        if(prevState.user !== this.state.user){
+            if(this.state.user){
+                if(this.state.user.admin){
+                    this.setState({
+                        loading: false
+                    })
+                }
+            }
+        }
     }
 
     render(){
-        return(
-            <div className="dashboard-main-container">
-                <BackToDash />
-                <h1 className="dashboard-title">
-                    Administrar mangas
-                </h1>
-                <span className="dash-space-container">
-                    <AddMangaVol mangas={this.state.mangas} />
-                    <AddManga mangas={this.state.mangas} editoriales={this.state.editoriales} />
-                </span>
-            </div>
-        )
+        if(this.state.loading){
+            return <Loader />
+        }else{
+            return(
+                <div className="dashboard-main-container">
+                    <BackToDash />
+                    <h1 className="dashboard-title">
+                        Administrar mangas
+                    </h1>
+                    <span className="dash-space-container">
+                        <AddMangaVol mangas={this.state.mangas} />
+                        <AddManga mangas={this.state.mangas} editoriales={this.state.editoriales} />
+                    </span>
+                </div>
+            )
+        }
     }
 
 }

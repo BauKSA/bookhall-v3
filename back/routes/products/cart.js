@@ -32,8 +32,10 @@ router.post('/add_item', async(req, res, next)=>{
             }
         })
     })
-    .catch((error)=>{
-        next(error)
+    .catch((err)=>{
+        err.sub = `Error al actualizar users. File cart.js - /add_item`
+        err.type = `update db.collection('users')`
+        next(err)
     })
 
 })
@@ -64,15 +66,13 @@ router.post('/delete_item', async(req, res, next)=>{
                 .then(()=>{
                     return res.send(true)
                 })
-                .catch((err)=>{
-                    next(err)
-                })
-
             }
         })
     })
-    .catch((error)=>{
-        next(error)
+    .catch((err)=>{
+        err.sub = `Error al actualizar users. File cart.js - /delete_item`
+        err.type = `update db.collection('users')`
+        next(err)
     })
 
 })

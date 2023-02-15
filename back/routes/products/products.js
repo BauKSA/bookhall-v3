@@ -19,9 +19,6 @@ router.get('/get_products', async(req, res, next)=>{
             editoriales.push(editorial)
         })
     }) 
-    .catch((error)=>{
-        next(error)
-    })
 
     const products = []
 
@@ -58,9 +55,6 @@ router.get('/get_products', async(req, res, next)=>{
 
         })
     })
-    .catch((error)=>{
-        next(error)
-    })
 
     const db_comics = db.collection('new-comics')
     await db_comics.get()
@@ -94,9 +88,6 @@ router.get('/get_products', async(req, res, next)=>{
             }
         })
     })
-    .catch((err)=>{
-        next(err)
-    })
 
     const db_col = db.collection('new-colecciones')
     await db_col.get()
@@ -125,9 +116,6 @@ router.get('/get_products', async(req, res, next)=>{
                 products.push(serie)
             }
         })
-    })
-    .catch((err)=>{
-        next(err)
     })
 
     const db_libros = db.collection('new-libros')
@@ -163,6 +151,8 @@ router.get('/get_products', async(req, res, next)=>{
         })
     })
     .catch((err)=>{
+        err.sub = `Error al traer productos. File products.js - /get_products`
+        err.type = `traer productos.`
         next(err)
     })
 
@@ -187,6 +177,8 @@ router.get('/get_editoriales', async(req, res, next)=>{
 
     })
     .catch((err)=>{
+        err.sub = `Error al traer editoriales. File products.js - /get_editoriales`
+        err.type = `leer db.collection('editoriales').`
         next(err)
     })
 })
