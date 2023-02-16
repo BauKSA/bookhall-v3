@@ -67,6 +67,12 @@
     background-color: rgb(5, 80, 125, 0.65);
 }
 
+.bs-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 @media (max-width: 800px){
 
     .news-grid{

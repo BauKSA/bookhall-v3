@@ -305,3 +305,18 @@ export function entregada(id){
         })
     }
 }
+
+export function despachada(data){
+    return function(dispatch){
+        axios.get(`${tokens.server}/despachada/${data.id}/${data.seguimiento}`)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}

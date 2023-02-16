@@ -105,7 +105,6 @@ class Ventas extends React.Component{
     render(){
         return(
             <div className='ventas-main-container'>
-                <h3 className='ventas-title'>Ventas</h3>
                 <span className='ventas-buttons'>
                     <button className='ventas-button'
                     id="retirar"
