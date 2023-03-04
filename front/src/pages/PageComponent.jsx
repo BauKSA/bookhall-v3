@@ -8,6 +8,7 @@ import AdminMangas from './dashboard/adminMangas/adminMangas';
 import AdminStock from './dashboard/adminStock/adminStock';
 import AdminVentas from './dashboard/adminVentas/adminVentas';
 import Dashboard from './dashboard/dashboard';
+import Precios from './dashboard/precios/precios';
 import SimulVenta from './dashboard/simulVenta/simulVenta';
 import Home from './home/home';
 import Mangas from './mangas/mangas';
@@ -56,6 +57,11 @@ class PageComponent extends React.Component{
                 <Route path='/simulventa' element={<SimulVenta
                     products={this.props.products}
                     user={this.props.user}/>}
+                />
+                <Route path='/adminprecios' element={<Precios
+                    products={this.props.products}
+                    user={this.props.user}
+                    editoriales={this.props.editoriales}/>}
                 />
             </Routes>
         )

@@ -135,7 +135,7 @@ class Dashboard extends React.Component{
                                 Precios
                             </h2>
                             <span className="dash-space-actions">
-                                <Link to="/adminstock" className="dash-space-link">
+                                <Link to="/adminprecios" className="dash-space-link">
                                     <button className="dash-space-button">
                                         <p className="dash-space-button-p">
                                             Modificar precios

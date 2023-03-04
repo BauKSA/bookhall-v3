@@ -335,3 +335,18 @@ export function simul_venta(data){
         })
     }
 }
+
+export function change_price(type, data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/change_price_${type}`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}

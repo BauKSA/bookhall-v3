@@ -37,7 +37,6 @@ export default function reducer(state = initialState, actions){
                 editoriales: actions.payload
             }
         case VENTAS:
-
             return{
                 ...state,
                 ventas: actions.payload

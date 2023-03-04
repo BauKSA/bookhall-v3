@@ -9,6 +9,7 @@ const colecciones = require('./products/colecciones')
 const libros = require('./products/libros')
 const stock = require('./stock/stock')
 const ventas = require('./ventas/ventas')
+const precio = require('./prices/change_price')
 
 const router = express();
 
@@ -21,5 +22,6 @@ router.use('/', colecciones)
 router.use('/', libros)
 router.use('/', stock)
 router.use('/', ventas)
+router.use('/', precio)
 
 module.exports = router;
