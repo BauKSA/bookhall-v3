@@ -121,6 +121,13 @@ class Dashboard extends React.Component{
                                         </p>
                                     </button>
                                 </Link>
+                                <Link to="/simulventa" className="dash-space-link">
+                                    <button className="dash-space-button">
+                                        <p className="dash-space-button-p">
+                                            Crear venta
+                                        </p>
+                                    </button>
+                                </Link>
                             </span>
                         </span>
                         <span className="dash-space">

@@ -320,3 +320,18 @@ export function despachada(data){
         })
     }
 }
+
+export function simul_venta(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/simul_venta`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}

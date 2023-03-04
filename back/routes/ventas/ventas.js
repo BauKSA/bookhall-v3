@@ -2,7 +2,10 @@ const express = require('express');
 const consultas = require('../../consultas');
 const admin = require('../../firebase');
 const db = admin.firestore();
+
 const compra_despachada = require('../../mail_templates/compra_despachada')
+const get_id = require('../functions/get_id');
+const { update_stock_mangas, update_stock_comics, update_stock_libros, update_stock_cols } = require('../functions/stock');
 
 const router = express();
 
@@ -96,6 +99,72 @@ router.get('/despachada/:id/:seg', async(req, res, next)=>{
         err.type = `delete db.collection('ventas')`
         next(err)
     })
+})
+
+router.post('/simul_venta', async(req, res, next)=>{
+    let mangas = []
+    let libros = []
+    let comics = []
+    let cols = []
+
+    const venta = req.body
+    venta.map((v)=>{
+        let data = get_id(v.id)
+        if(data.type === "manga"){
+            let data = {
+                id: v.id,
+                stock: -1
+            }
+            return mangas.push(data)
+        }else if(data.type === "comic"){
+            let data = {
+                id: v.id,
+                stock: -1
+            }
+            return comics.push(data)
+        }else if(data.type === "libro"){
+            let data = {
+                id: v.id,
+                stock: -1
+            }
+            return libros.push(data)
+        }else{
+            let data = {
+                id: v.id,
+                stock: -1
+            }
+            return cols.push(data)
+        }
+    })
+
+    let success = true
+
+    try{
+        if(mangas.length > 0){
+            update_stock_mangas(mangas)
+        }
+
+        if(comics.length > 0){
+            update_stock_comics(comics)
+        }
+
+        if(libros.length > 0){
+            update_stock_libros(libros)
+        }
+
+        if(cols.length > 0){
+            update_stock_cols(cols)
+        }
+
+    }catch(err){
+        success = false
+        err.sub = `Error al actualizar stock. File ventas.js - /simul_venta`
+        err.type = `update stock - ${err.message}`
+        return next(err)
+    }
+
+    return success ? res.send(true) : res.send(false)
+
 })
 
 module.exports = router
