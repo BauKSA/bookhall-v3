@@ -29,8 +29,10 @@ class MainComponent extends React.Component{
 
     componentDidUpdate(prevProps){
         if(prevProps.state.products !== this.props.state.products){
+            let products = this.props.state.products
+            products = products.sort((a, b) => a.nombre.localeCompare(b.nombre))
             this.setState({
-                products: this.props.state.products
+                products: products
             }, ()=>{
                 this.props.get_editoriales()
             })
@@ -43,8 +45,10 @@ class MainComponent extends React.Component{
         }
 
         if(prevProps.state.editoriales !== this.props.state.editoriales){
+            let editoriales = this.props.state.editoriales
+            editoriales = editoriales.sort((a, b) => a.nombre.localeCompare(b.nombre))
             this.setState({
-                editoriales: this.props.state.editoriales
+                editoriales: editoriales
             }, ()=>{
                 this.props.get_ventas()
             })
