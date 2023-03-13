@@ -6,6 +6,8 @@ import { change_price } from '../../../redux/actions'
 
 import { set_data } from "./control";
 
+import BackToDash from '../backToDash/backToDash'
+
 import Swal from 'sweetalert2'
 import get_id from "../../../get_id";
 
@@ -228,6 +230,8 @@ class Precios extends React.Component{
                     "justifyContent":"center",
                     "marginTop":"25px"}
                 }>
+                    <BackToDash />
+                    <br/>
                     <form className="dash-form-container" onSubmit={this.handleUpdate}>
                         <h3 className="dash-form-title">
                             Modificar precios

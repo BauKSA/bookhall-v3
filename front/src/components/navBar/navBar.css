@@ -43,7 +43,6 @@
 .search{
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
     justify-content: center;
 }
 
@@ -93,9 +92,16 @@
     font-weight: bold;
 }
 
-.search-button:hover{
-    cursor: pointer;
-    background-color: rgb(55, 130, 175);
+.advanced{
+    margin: 0;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    font-weight: bolder;
+    font-size: 15px;
+    color: rgb(5, 80, 125);
+    width: fit-content;
+    align-self: center;
+    transition: 0.5s;
 }
 
 .nav{
@@ -125,11 +131,22 @@
     transition: 0.5s;
 }
 
-.nav-button:hover{
-    cursor: pointer;
-    color: white;
-    background-color: black;
-    border-color: black;
+@media (min-width: 1000px){
+    .search-button:hover{
+        cursor: pointer;
+        background-color: rgb(55, 130, 175);
+    }
+
+    .advanced:hover{
+        text-decoration: underline;
+    }    
+    
+    .nav-button:hover{
+        cursor: pointer;
+        color: white;
+        background-color: black;
+        border-color: black;
+    }
 }
 
 @media (min-width: 950px) and (max-width: 1115px){

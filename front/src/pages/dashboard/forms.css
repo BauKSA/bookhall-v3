@@ -102,6 +102,12 @@ option{
     max-height: 35px;
 }
 
+.area{
+    resize: none;
+    height: 125px;
+    padding: 15px;
+}
+
 input[type="file"] {
     display: none;
 }

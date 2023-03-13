@@ -3,6 +3,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'; 
 import Cart from './cart/cart';
 import AdminComics from './dashboard/adminComics/adminComics';
+import AdminFiguras from './dashboard/adminFiguras/adminFiguras';
 import AdminLibros from './dashboard/adminLibros/adminLibros';
 import AdminMangas from './dashboard/adminMangas/adminMangas';
 import AdminStock from './dashboard/adminStock/adminStock';
@@ -45,6 +46,9 @@ class PageComponent extends React.Component{
                     products={this.props.products}
                     user={this.props.user}
                     editoriales={this.props.editoriales}/>}
+                />
+                <Route path='/adminfiguras' element={<AdminFiguras
+                    user={this.props.user}/>}
                 />
                 <Route path='/adminstock' element={<AdminStock
                     products={this.props.products}

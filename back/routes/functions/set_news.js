@@ -31,6 +31,23 @@ async function set_news(_date, n){
         })
     })
 
+    const db_figuras = db.collection('figuras')
+    await db_figuras.get()
+    .then((get_figuras)=>{
+        get_figuras.forEach((doc)=>{
+            if(doc.data().novedad){
+                const fig_date = new Date(doc.data().createdAt)
+                    if(fig_date.getFullYear() < date.getFullYear()){
+                        _response.push(`${doc.data().nombre}`)
+                    }else if(fig_date.getMonth() < date.getMonth()){
+                        _response.push(`${doc.data().nombre}`)
+                    }else if(fig_date.getDate() < date.getDate()){
+                        _response.push(`${doc.data().nombre}`)
+                    }
+            }
+        })
+    })
+
     console.log(_response)
     return _response
 

@@ -98,6 +98,7 @@ class NavBar extends React.Component{
                                 </p>
                             </button>
                         </span>
+                        <a href="/advancedsearch" className="advanced">Búsqueda avanzada</a>
                         <span className="nav">
                             <span className="nav-mobile">
                                 <Link to="/mangas" className="nav-button">

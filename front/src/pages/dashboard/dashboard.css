@@ -34,6 +34,10 @@
     width: 100%;
 }
 
+.one-column{
+    grid-template-columns: 475px;
+}
+
 .dash-space{
     display: flex;
     flex-direction: column;

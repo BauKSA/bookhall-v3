@@ -30,13 +30,11 @@
     color: white;
 }
 
-.home-bs-title{  
+.home-bs-title{ 
+    color: rgb(105, 180, 225);
     font-size: 75px;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
     text-shadow: 
-        3px 3px rgb(105, 180, 225);
+        3px 3px white;
     margin: 0;
     width: fit-content;
     align-self: center;
@@ -53,7 +51,6 @@
 .home-bs-img{
     border-color: black;
     border-style: solid;
-    border-right-style: none;
     width: 30%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -77,8 +74,6 @@
 .home-bs-card-title{
     text-align: left;
     margin: 0;
-    margin-top: 2px;
-    margin-left: 2px;
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -89,6 +84,9 @@
     width: 95%;
     border-bottom-right-radius: 10px;
     font-size: 1em;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-color: black;
 }
 
 .home-bs-card-icon{

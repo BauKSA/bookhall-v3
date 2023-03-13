@@ -259,6 +259,22 @@ export function add_libro_vol(data){
     }
 }
 
+    /* FIGURAS */
+export function add_figura(data){
+    return function(dispatch){
+        axios.post(`${tokens.server}/post_figura`, data)
+        .then((response)=>{
+            dispatch({
+                type: STATUS,
+                payload: response.data
+            })
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
+
 /* STOCK */
 export function change_stock(data){
     return function(dispatch){

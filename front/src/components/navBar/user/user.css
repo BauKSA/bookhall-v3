@@ -273,4 +273,13 @@
     .login-module{
         width: 300px;
     }
+
+    .logout{
+        border-radius: 5px;
+    }
+
+    .login{
+        background-color: rgb(55, 130, 175, 0.5);
+        margin: 5px;
+    }
 }
